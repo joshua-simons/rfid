@@ -97,7 +97,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			time.sleep(2)
 			GPIO.cleanup()
 			os.system('clear')
-			os.system('su pi -c "/bin/bash && cd /home/pi"')
+			os.system('su pi -c "/bin/bash"')
 			exit(0)
 
 		if id == 659671112226:
@@ -123,6 +123,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 		if tries == 0:
 			os.system('clear')
 			print ("Number of Attempts Exceeded")
+			print("System Will Accept Input Again in 10 Minutes")
 			sleep(600)
 			tries = 3
 
