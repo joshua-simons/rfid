@@ -16,15 +16,8 @@ server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 reader = SimpleMFRC522()
 tries = 3
 
-def readTag():
-        global name
-        id, name = reader.read()
-        return id
-
-try:
-	while True:
-		os.system('clear')
-		print("""
+#ASCII Vars
+fsociety = """
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XX                                                                          XX
@@ -87,8 +80,43 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     888    o.  )88b 888   888 888   .o8  888  888    .o   888 .    `888'
    o888o   8""888P' `Y8bod8P' `Y8bod8P' o888o `Y8bod8P'   "888"      d8'
                                                                 .o...P'
-                                                                `XER0'
-			""")
+                                                                `10nix'
+"""
+
+middleF = """
+________________$$$$
+______________$$____$$
+______________$$____$$
+______________$$____$$
+______________$$____$$
+______________$$____$$
+__________$$$$$$____$$$$$$
+________$$____$$____$$____$$$$
+________$$____$$____$$____$$__$$
+$$$$$$__$$____$$____$$____$$____$$
+$$____$$$$________________$$____$$
+$$______$$______________________$$
+__$$____$$______________________$$
+___$$$__$$______________________$$
+____$$__________________________$$
+_____$$$________________________$$
+______$$______________________$$$
+_______$$$____________________$$
+________$$____________________$$
+_________$$$________________$$$
+__________$$________________$$
+__________$$$$$$$$$$$$$$$$$$$$
+"""
+
+def readTag():
+        global name
+        id, name = reader.read()
+        return id
+
+try:
+	while True:
+		os.system('clear')
+		print(fsociety)
 		print ("Please swipe tag to authenticate.")
 		id = readTag()
 		if id == 729820977831:
@@ -110,15 +138,16 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                         exit(0)
 
 		else:
+			os.system('clear')
 			print ("Authrentication Failed")
 			tries -= 1
-
 			Text = "Authentication Failure on joshpi"
+			print (middleF)
 			eMessage = 'Subject: {}\n\n{}'.format(Subject, Text)
 			server.login("kd2egt@gmail.com", "ybihbernfcvynzju")
 			server.sendmail(eFROM, eTO, eMessage)
 			server.quit
-			time.sleep(2)
+			time.sleep(5)
 
 		if tries == 0:
 			os.system('clear')
